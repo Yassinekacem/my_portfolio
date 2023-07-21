@@ -1,103 +1,69 @@
-"use client" // this is a client component
 import React from "react"
-import { useState } from "react"
-import { Link } from "react-scroll/modules"
-import { usePathname } from "next/navigation"
-import { useTheme } from "next-themes"
-import { RiMoonFill, RiSunLine } from "react-icons/ri"
-import { IoMdMenu, IoMdClose } from "react-icons/io"
+import Image from "next/image"
+import Link from "next/link"
+import SlideUp from "./SlideUp"
+import { BsGithub } from "react-icons/bs"
 
-interface NavItem {
-  label: string
-  page: string
-}
-
-const NAV_ITEMS: Array<NavItem> = [
+const projects = [
   {
-    label: "Home",
-    page: "home",
+    name: "Web site : Scooby ",
+    description:
+      "This web application is part of my final year project. It is dedicated to pet enthusiasts in Tunisia. Technologies used: Next.js, Node.js, Express, Prisma, PostgreSQL, Bootstrap, TypeScript.",
+    image: "/thankfulthoughts.png",
+    github: "https://github.com/Yassinekacem?tab=repositories",
   },
-  {
-    label: "About",
-    page: "about",
-  },
-  {
-    label: "Projects",
-    page: "projects",
-  },
+ 
 ]
 
-export default function Navbar() {
-  const { systemTheme, theme, setTheme } = useTheme()
-  const currentTheme = theme === "system" ? systemTheme : theme
-  const pathname = usePathname()
-  const [navbar, setNavbar] = useState(false)
+const ProjectsSection = () => {
   return (
-    <header className="w-full mx-auto  px-4 sm:px-20 fixed top-0 z-50 shadow bg-white dark:bg-stone-900 dark:border-b dark:border-stone-600">
-      <div className="justify-between md:items-center md:flex">
-        <div>
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <Link to="home">
-              <div className="container flex items-center space-x-2">
-                <h2 className="text-2xl font-bold">Kacem Yassine</h2>
-              </div>
-            </Link>
-            <div className="md:hidden">
-              <button
-                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
-                onClick={() => setNavbar(!navbar)}
-              >
-                {navbar ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}
-              </button>
-            </div>
-          </div>
-        </div>
+    <section id="projects">
+      <h1 className="my-10 text-center font-bold text-4xl">
+        Projects
+        <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"></hr>
+      </h1>
 
-        <div>
-          <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-              navbar ? "block" : "hidden"
-            }`}
-          >
-            <div className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              {NAV_ITEMS.map((item, idx) => {
-                return (
-                  <Link
-                    key={idx}
-                    to={item.page}
-                    className={
-                      "block lg:inline-block text-neutral-900  hover:text-neutral-500 dark:text-neutral-100"
-                    }
-                    activeClass="active"
-                    spy={true}
-                    smooth={true}
-                    offset={-100}
-                    duration={500}
-                    onClick={() => setNavbar(!navbar)}
-                  >
-                    {item.label}
-                  </Link>
-                )
-              })}
-              {currentTheme === "dark" ? (
-                <button
-                  onClick={() => setTheme("light")}
-                  className="bg-slate-100 p-2 rounded-xl"
-                >
-                  <RiSunLine size={25} color="black" />
-                </button>
-              ) : (
-                <button
-                  onClick={() => setTheme("dark")}
-                  className="bg-slate-100 p-2 rounded-xl"
-                >
-                  <RiMoonFill size={25} />
-                </button>
-              )}
+      <div className="flex flex-col space-y-28">
+        {projects.map((project, idx) => {
+          return (
+            <div key={idx}>
+              <SlideUp offset="-300px 0px -300px 0px">
+                <div className="flex flex-col  animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
+                  <div className=" md:w-1/2">
+                    <Link href="">
+                      <Image
+                        src={project.image}
+                        alt=""
+                        width={1000}
+                        height={1000}
+                        className="rounded-xl shadow-xl hover:opacity-70"
+                      />
+                    </Link>
+                  </div>
+                  <div className="mt-8 md:w-1/2">
+                    <h1 className="text-4xl font-bold mb-6">{project.name}</h1>
+                    <p className="text-xl leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-row align-bottom space-x-4">
+                      <Link href={project.github} target="_blank">
+                        <BsGithub
+                          size={30}
+                          className="hover:-translate-y-1 transition-transform cursor-pointer"
+                        />
+                      </Link>
+                    
+                    </div>
+                  </div>
+                </div>
+              </SlideUp>
             </div>
-          </div>
-        </div>
+          )
+        })}
+        
       </div>
-    </header>
+    </section>
   )
 }
+
+export default ProjectsSection
