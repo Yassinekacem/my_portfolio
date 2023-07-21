@@ -6,13 +6,17 @@ const skills = [
   { skill: "CSS" },
   { skill: "JavaScript" },
   { skill: "TypeScript" },
-  { skill: "Python" },
+  { skill: "Node js" },
+  { skill: "Express" },
   { skill: "React" },
   { skill: "Next.js" },
   { skill: "Tailwind CSS" },
+  { skill: "Bootstrap" },
+  { skill: "Mongo db" },
+  { skill: "Postgresql" },
+  { skill: "Prisma" },
   { skill: "Git" },
   { skill: "GitHub" },
-  { skill: "Jupyter Notebooks" },
 ]
 
 const AboutSection = () => {
@@ -30,24 +34,18 @@ const AboutSection = () => {
               Get to know me!
             </h1>
             <p>
-              Hi, my name is Hosna and I am a{" "}
+              
+              
+Hi, my name is Yassine Kacem. I am 22 years old and I am a{" "}
               <span className="font-bold">{"highly ambitious"}</span>,
               <span className="font-bold">{" self-motivated"}</span>, and
-              <span className="font-bold">{" driven"}</span> software engineer
-              based in Los Angeles, CA.
+              <span className="font-bold">{" driven"}</span>Junior Full-Stack Web Developer  based in Nabeul, Tunisia.
             </p>
             <br />
-            <p>
-              I graduated from California State University, Northridge in 2019
-              with a BS in Computer Engineering and have been working in the
-              field ever since.
-            </p>
+           
             <br />
             <p>
-              I have a wide range of hobbies and passions that keep me busy.
-              From reading, playing sports, traveling, to making YouTube videos,
-              I am always seeking new experiences and love to keep myself
-              engaged and learning new things.
+            As a junior full-stack web developer, I ve been passionate about web development since 2021, constantly expanding my skills and knowledge.
             </p>
             <br />
             <p>
@@ -62,7 +60,7 @@ const AboutSection = () => {
             </p>
           </div>
           <div className="text-center md:w-1/2 md:text-left">
-            <h1 className="text-2xl font-bold mb-6">My Skills</h1>
+            <h1 className="text-2xl font-bold mb-6">My specialized skills :</h1>
             <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
               {skills.map((item, idx) => {
                 return (
